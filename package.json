@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "types:contentful && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "types:contentful": "export $(cat .env | awk '!/^\\s*#/' | awk '!/^\\s*$/'); cf-content-types-generator --spaceId $CONTENTFUL_SPACE_ID --token $CONTENTFUL_MANAGEMENT_TOKEN -o contentful/ -X"
   },
   "dependencies": {
     "classnames": "^2.5.1",
     "colorjs.io": "^0.4.5",
+    "contentful": "^10.6.22",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18"
@@ -20,6 +22,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "cf-content-types-generator": "^2.15.0",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "eslint-config-prettier": "^9.1.0",
