@@ -17,7 +17,9 @@ const config: Config = {
         'ww-background': 'var(--ww-background-color)',
         'ww-background-inverted': 'var(--ww-background-inverted-color)',
         'ww-text': 'var(--ww-text-color)',
-        'ww-contrast-text': 'var(--ww-contrast-text-color, var(--ww-text-color))',
+        'ww-contrast-text': 'var(--ww-contrast-text-color)',
+        'ww-menu-bg': 'var(--ww-menu-bg-color)',
+        'ww-menu-text': 'var(--ww-menu-text-color)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

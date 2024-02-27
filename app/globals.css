@@ -5,3 +5,11 @@
 body {
   @apply font-sans antialiased;
 }
+
+.u-icon-stroke-white path {
+  @apply stroke-white;
+}
+
+.u-icon-stroke-black path {
+  @apply stroke-black;
+}

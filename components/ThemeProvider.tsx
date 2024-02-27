@@ -7,6 +7,8 @@ const ThemeContext = createContext<IThemeContext>({
   accentColor: '#000000',
   backgroundColor: '#ffffff',
   textColor: '#000000',
+  menuBackgroundColor: '#000000',
+  menuTextColor: '#ffffff',
 });
 export const useTheme = () => useContext(ThemeContext);
 
@@ -21,6 +23,8 @@ const ThemeProvider: FC<{ theme: IThemeContext; children: ReactNode }> = ({ them
           --ww-background-color: ${theme.backgroundColor};
           --ww-background-inverted-color: ${theme.textColor};
           --ww-text-color: ${theme.accentColor};
+          --ww-menu-bg-color: ${theme.menuBackgroundColor};
+          --ww-menu-text-color: ${theme.menuTextColor};
         }
       `}</style>
 

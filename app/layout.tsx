@@ -19,7 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <ThemeProvider theme={{ accentColor: 'rgba(129,71,147,1)', backgroundColor: '#ffffff', textColor: '#000000' }}>
+        <ThemeProvider
+          theme={{
+            accentColor: 'rgba(129,71,147,1)',
+            backgroundColor: '#ffffff',
+            textColor: '#000000',
+            menuBackgroundColor: '#000000',
+            menuTextColor: '#ffffff',
+          }}
+        >
           {children}
         </ThemeProvider>
       </body>
