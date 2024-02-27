@@ -6,6 +6,7 @@ import getHeader from '@lib/contentful/header';
 import AnnouncementBar from './AnnouncementBar';
 import MobileMenu from './MobileMenu';
 import DesktopMenu from './DesktopMenu';
+import Link from 'next/link';
 
 const Header: FC<ThemedSSComponent> = async ({ theme }) => {
   const header = await getHeader();
@@ -25,7 +26,7 @@ const Header: FC<ThemedSSComponent> = async ({ theme }) => {
             <MobileMenu navigation={header.navigation!} theme={theme} />
           </div>
 
-          {header.title && !header.logo && <span>{header.title}</span>}
+          {header.title && !header.logo && <Link href="/">{header.title}</Link>}
 
           <div className="flex-1 hidden md:block lg:hidden">
             <DesktopMenu

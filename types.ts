@@ -2,8 +2,10 @@ import { Entry } from 'contentful';
 import {
   TypeAnnouncementSkeleton,
   TypeHeaderSkeleton,
+  TypeHeroSkeleton,
   TypeLinkSkeleton,
   TypeNavigationSkeleton,
+  TypePageFields,
   TypePageSkeleton,
 } from './contentful';
 
@@ -24,6 +26,7 @@ export type AnnouncementEntry = Entry<TypeAnnouncementSkeleton, undefined, strin
 export type NavigationEntry = Entry<TypeNavigationSkeleton, undefined, string>;
 export type LinkEntry = Entry<TypeLinkSkeleton, undefined, string>;
 export type PageEntry = Entry<TypePageSkeleton, undefined, string>;
+export type HeroEntry = Entry<TypeHeroSkeleton, undefined, string>;
 export interface ContentHeader {
   title: string;
   logo?: ContentImage | null;
@@ -45,6 +48,7 @@ export interface ContentNavigation {
 export interface ContentPage {
   title: string;
   slug: string;
+  sections: ContentHero[];
 }
 export interface ContentLink {
   name: string;
@@ -52,4 +56,28 @@ export interface ContentLink {
   text: string;
   url?: string;
   page?: ContentPage | null;
+}
+
+export type AlignmentValue =
+  | 'Top Left'
+  | 'Top Center'
+  | 'Top Right'
+  | 'Middle Left'
+  | 'Middle Center'
+  | 'Middle Right'
+  | 'Bottom Left'
+  | 'Bottom Center'
+  | 'Bottom Right';
+
+export interface ContentHero {
+  type: 'hero';
+  name: string;
+  heading?: string;
+  body?: string;
+  backgroundImage?: ContentImage | null;
+  backgroundColor?: string;
+  overlayOpacity: number;
+  alignment: AlignmentValue;
+  callToAction?: ContentLink | null;
+  textColor?: string;
 }

@@ -20,14 +20,14 @@ const DesktopMenu: FC<{ topLevelLinks: IContentLink[]; secondaryLinks: IContentL
       </ul>
 
       <MenuTrigger>
-        <Button aria-label="See More" className="font-semibold">
+        <Button aria-label="See More" className="font-semibold outline-none">
           More
         </Button>
 
         <Popover className="bg-ww-menu-bg shadow-md text-sm text-ww-menu-text py-2 rounded-sm">
-          <Menu>
+          <Menu className="outline-none">
             {secondaryLinks.map((link) => (
-              <MenuItem key={link.name}>
+              <MenuItem className="outline-none" key={link.name}>
                 <ContentLink link={link} className="block py-1 px-4" />
               </MenuItem>
             ))}
