@@ -1,14 +1,9 @@
 import Header from '@components/Header';
+import getTheme from '@lib/contentful/theme';
 
-const theme = {
-  accentColor: 'rgba(129,71,147,1)',
-  backgroundColor: '#ffffff',
-  textColor: '#000000',
-  menuBackgroundColor: '#000000',
-  menuTextColor: '#ffffff',
-};
+const HomePage = async () => {
+  const theme = await getTheme();
 
-const HomePage = () => {
   return (
     <div className="min-h-screen">
       <Header theme={theme} />
