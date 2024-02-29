@@ -2,6 +2,7 @@
 
 import { FC, ReactNode, createContext, useContext } from 'react';
 import { IThemeContext } from '../types';
+import { getTextColor } from '@utils/colors';
 
 const ThemeContext = createContext<IThemeContext>({
   accentColor: '#000000',
@@ -17,12 +18,13 @@ const ThemeProvider: FC<{ theme: IThemeContext; children: ReactNode }> = ({ them
 
   return (
     <ThemeContext.Provider value={theme}>
-      <style jsx global>{`
+      <style>{`
         :root {
           --ww-accent-color: ${theme.accentColor};
+          --ww-text-on-accent-color: ${getTextColor(theme.accentColor)};
           --ww-background-color: ${theme.backgroundColor};
           --ww-background-inverted-color: ${theme.textColor};
-          --ww-text-color: ${theme.accentColor};
+          --ww-text-color: ${theme.textColor};
           --ww-menu-bg-color: ${theme.menuBackgroundColor};
           --ww-menu-text-color: ${theme.menuTextColor};
         }

@@ -7,6 +7,8 @@ import {
   TypeNavigationSkeleton,
   TypePageFields,
   TypePageSkeleton,
+  TypeRichTextSkeleton,
+  TypeTextWithImageBlockSkeleton,
 } from './contentful';
 
 export interface IThemeContext {
@@ -27,6 +29,9 @@ export type NavigationEntry = Entry<TypeNavigationSkeleton, undefined, string>;
 export type LinkEntry = Entry<TypeLinkSkeleton, undefined, string>;
 export type PageEntry = Entry<TypePageSkeleton, undefined, string>;
 export type HeroEntry = Entry<TypeHeroSkeleton, undefined, string>;
+export type RichTextEntry = Entry<TypeRichTextSkeleton, undefined, string>;
+export type TextWithImageBlockEntry = Entry<TypeTextWithImageBlockSkeleton, undefined, string>;
+
 export interface ContentHeader {
   title: string;
   logo?: ContentImage | null;
@@ -48,7 +53,7 @@ export interface ContentNavigation {
 export interface ContentPage {
   title: string;
   slug: string;
-  sections: ContentHero[];
+  sections: Entry<TypeHeroSkeleton | TypeRichTextSkeleton | TypeTextWithImageBlockSkeleton, undefined, string>[];
 }
 export interface ContentLink {
   name: string;
@@ -68,16 +73,3 @@ export type AlignmentValue =
   | 'Bottom Left'
   | 'Bottom Center'
   | 'Bottom Right';
-
-export interface ContentHero {
-  type: 'hero';
-  name: string;
-  heading?: string;
-  body?: string;
-  backgroundImage?: ContentImage | null;
-  backgroundColor?: string;
-  overlayOpacity: number;
-  alignment: AlignmentValue;
-  callToAction?: ContentLink | null;
-  textColor?: string;
-}

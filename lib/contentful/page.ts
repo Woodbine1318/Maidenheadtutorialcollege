@@ -1,8 +1,7 @@
 import { UnresolvedLink } from 'contentful';
-import { ContentPage, PageEntry } from '../../types';
+import { ContentPage, HeroEntry, PageEntry, RichTextEntry, TextWithImageBlockEntry } from '../../types';
 import { contentfulClient } from '@utils/contentful';
 import { TypePageSkeleton } from '../../contentful';
-import { parseHero } from './hero';
 
 export const parsePage = (entry: UnresolvedLink<'Entry'> | PageEntry): ContentPage | null => {
   if (!('fields' in entry)) return null;
@@ -12,7 +11,9 @@ export const parsePage = (entry: UnresolvedLink<'Entry'> | PageEntry): ContentPa
       ?.map((section) => {
         if (!('fields' in section)) return null;
 
-        if (section.sys.contentType.sys.id === 'hero') return parseHero(section);
+        if (section.sys.contentType.sys.id === 'hero') return section as HeroEntry;
+        if (section.sys.contentType.sys.id === 'richText') return section as RichTextEntry;
+        if (section.sys.contentType.sys.id === 'textWithImageBlock') return section as TextWithImageBlockEntry;
 
         return null;
       })

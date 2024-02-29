@@ -13,3 +13,7 @@ body {
 .u-icon-stroke-black path {
   @apply stroke-black;
 }
+
+.c-markdown p:not(:last-child) {
+  @apply mb-4;
+}
