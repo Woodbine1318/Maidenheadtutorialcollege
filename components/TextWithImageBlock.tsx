@@ -23,13 +23,17 @@ const TextWithImageBlock: FC<{ section: TextWithImageBlockEntry }> = ({ section:
     >
       <Container
         variant="lg"
-        className={classNames('flex flex-col md:flex-row', {
+        className={classNames('flex flex-col md:flex-row md:items-center', {
           'py-12': fields.spacing === 'Both',
           'pt-12': fields.spacing === 'Top',
           'pb-12': fields.spacing === 'Bottom',
         })}
       >
-        <div className="h-[20rem] md:flex-1 md:mr-12 lg:mr-16">
+        <div
+          className={classNames('h-[20rem] md:flex-1 md:mr-12 lg:mr-16', {
+            'md:order-2': fields.imagePosition === 'Right',
+          })}
+        >
           <img
             src={image!.src}
             width={image!.width}

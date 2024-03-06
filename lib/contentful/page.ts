@@ -1,5 +1,13 @@
 import { UnresolvedLink } from 'contentful';
-import { ContentPage, HeroEntry, PageEntry, RichTextEntry, TextWithImageBlockEntry } from '../../types';
+import {
+  ContentPage,
+  EditorialSectionEntry,
+  HeroEntry,
+  ImageMarqueeEntry,
+  PageEntry,
+  RichTextEntry,
+  TextWithImageBlockEntry,
+} from '../../types';
 import { contentfulClient } from '@utils/contentful';
 import { TypePageSkeleton } from '../../contentful';
 
@@ -14,6 +22,8 @@ export const parsePage = (entry: UnresolvedLink<'Entry'> | PageEntry): ContentPa
         if (section.sys.contentType.sys.id === 'hero') return section as HeroEntry;
         if (section.sys.contentType.sys.id === 'richText') return section as RichTextEntry;
         if (section.sys.contentType.sys.id === 'textWithImageBlock') return section as TextWithImageBlockEntry;
+        if (section.sys.contentType.sys.id === 'imageMarquee') return section as ImageMarqueeEntry;
+        if (section.sys.contentType.sys.id === 'editorialSection') return section as EditorialSectionEntry;
 
         return null;
       })

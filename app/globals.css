@@ -17,3 +17,33 @@ body {
 .c-markdown p:not(:last-child) {
   @apply mb-4;
 }
+
+.c-markdow p + h1,
+.c-markdow p + h2,
+.c-markdow p + h3,
+.c-markdow p + h4,
+.c-markdow p + h5,
+.c-markdow p + h6 {
+  @apply mt-8;
+}
+
+.c-markdown h1,
+.c-markdown h2,
+.c-markdown h3,
+.c-markdown h4,
+.c-markdown h5,
+.c-markdown h6 {
+  @apply mb-2 font-semibold;
+}
+
+.c-markdown a {
+  @apply text-ww-accent underline;
+}
+
+.c-markdown ul {
+  @apply list-inside list-disc mb-4;
+}
+
+.c-markdown ul li {
+  @apply mb-2;
+}

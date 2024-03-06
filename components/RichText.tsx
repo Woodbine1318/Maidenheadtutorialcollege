@@ -24,8 +24,8 @@ const RichText: FC<{ section: RichTextEntry }> = ({ section: { fields } }) => {
         } as CSSProperties
       }
     >
-      <Container className="text-ww-text">
-        {fields.heading && <h1 className="text-3xl text-ww-accent md:text-3xl lg:text-5xl">{fields.heading}</h1>}
+      <Container variant="lg" className="text-ww-text">
+        {fields.heading && <h1 className="text-3xl text-ww-accent md:text-3xl lg:text-3xl">{fields.heading}</h1>}
         {fields.body && <Markdown className="c-markdown mt-8 max-w-[75ch] inline-block">{fields.body}</Markdown>}
 
         {cta && (

@@ -1,8 +1,10 @@
 import { Entry } from 'contentful';
 import {
   TypeAnnouncementSkeleton,
+  TypeEditorialSectionSkeleton,
   TypeHeaderSkeleton,
   TypeHeroSkeleton,
+  TypeImageMarqueeSkeleton,
   TypeLinkSkeleton,
   TypeNavigationSkeleton,
   TypePageFields,
@@ -31,6 +33,8 @@ export type PageEntry = Entry<TypePageSkeleton, undefined, string>;
 export type HeroEntry = Entry<TypeHeroSkeleton, undefined, string>;
 export type RichTextEntry = Entry<TypeRichTextSkeleton, undefined, string>;
 export type TextWithImageBlockEntry = Entry<TypeTextWithImageBlockSkeleton, undefined, string>;
+export type ImageMarqueeEntry = Entry<TypeImageMarqueeSkeleton, undefined, string>;
+export type EditorialSectionEntry = Entry<TypeEditorialSectionSkeleton, undefined, string>;
 
 export interface ContentHeader {
   title: string;
@@ -53,7 +57,15 @@ export interface ContentNavigation {
 export interface ContentPage {
   title: string;
   slug: string;
-  sections: Entry<TypeHeroSkeleton | TypeRichTextSkeleton | TypeTextWithImageBlockSkeleton, undefined, string>[];
+  sections: Entry<
+    | TypeHeroSkeleton
+    | TypeRichTextSkeleton
+    | TypeTextWithImageBlockSkeleton
+    | TypeImageMarqueeSkeleton
+    | TypeEditorialSectionSkeleton,
+    undefined,
+    string
+  >[];
 }
 export interface ContentLink {
   name: string;
