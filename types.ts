@@ -1,6 +1,7 @@
 import { Entry } from 'contentful';
 import {
   TypeAnnouncementSkeleton,
+  TypeBlogPostSkeleton,
   TypeEditorialSectionSkeleton,
   TypeHeaderSkeleton,
   TypeHeroSkeleton,
@@ -35,6 +36,7 @@ export type RichTextEntry = Entry<TypeRichTextSkeleton, undefined, string>;
 export type TextWithImageBlockEntry = Entry<TypeTextWithImageBlockSkeleton, undefined, string>;
 export type ImageMarqueeEntry = Entry<TypeImageMarqueeSkeleton, undefined, string>;
 export type EditorialSectionEntry = Entry<TypeEditorialSectionSkeleton, undefined, string>;
+export type BlogPostEntry = Entry<TypeBlogPostSkeleton, undefined, string>;
 
 export interface ContentHeader {
   title: string;
