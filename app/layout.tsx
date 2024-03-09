@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import ThemeProvider from '@components/ThemeProvider';
 import getTheme from '@lib/contentful/theme';
+import Header from '@components/Header';
+import Footer from '@components/Footer';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -22,7 +24,14 @@ export const RootLayout = async ({
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <div className="min-h-screen">
+            <Header theme={theme} />
+            {children}
+
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import { FC } from 'react';
 import getTheme from '@lib/contentful/theme';
 import { notFound } from 'next/navigation';
-import Header from '@components/Header';
 import { parseContentImage } from '@lib/contentful/asset';
 import { getBlogPost, getBlogPosts } from '@lib/contentful/blogPost';
 import Container from '@components/Container';
@@ -39,9 +38,7 @@ const PostPage: FC<PageProps> = async ({ params }) => {
   const image = post.fields.cover ? parseContentImage(post.fields.cover) : null;
 
   return (
-    <div className="min-h-screen">
-      <Header theme={theme} />
-
+    <>
       <header>
         <Container variant="lg" className="flex flex-col items-center text-center mb-8 pt-16 pb-12 md:pt-20">
           <h1 className="text-3xl font-semibold mb-4 md:text-4xl">{post.fields.title}</h1>
@@ -66,7 +63,7 @@ const PostPage: FC<PageProps> = async ({ params }) => {
       <section className="py-16 px-4 max-w-screen-md mx-auto">
         <Markdown className="c-markdown">{post.fields.content}</Markdown>
       </section>
-    </div>
+    </>
   );
 };
 

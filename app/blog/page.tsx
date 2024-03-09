@@ -1,6 +1,5 @@
 import BlogPostCard from '@components/BlogPostCard';
 import Container from '@components/Container';
-import Header from '@components/Header';
 import PageSections from '@components/PageSections';
 import Pagination from '@components/Pagination';
 import { getBlogPostCount, getBlogPosts } from '@lib/contentful/blogPost';
@@ -21,9 +20,7 @@ const BlogPage = async () => {
   const posts = await getBlogPosts({ limit: postsPerPage, skip: 0 });
 
   return (
-    <div className="min-h-screen">
-      <Header theme={theme} />
-
+    <>
       <PageSections sections={page.sections} />
 
       <Container
@@ -40,7 +37,7 @@ const BlogPage = async () => {
           <Pagination totalPages={totalPages} currentPage={1} />
         </Container>
       )}
-    </div>
+    </>
   );
 };
 

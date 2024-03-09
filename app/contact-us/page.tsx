@@ -1,5 +1,4 @@
 import ContactDetails from '@components/ContactDetails';
-import Header from '@components/Header';
 import PageSections from '@components/PageSections';
 import { getPage } from '@lib/contentful/page';
 import getTheme from '@lib/contentful/theme';
@@ -15,15 +14,13 @@ const ContactPage = async () => {
   const notHeroSections = page.sections.filter((section) => section.sys.contentType.sys.id !== 'hero');
 
   return (
-    <div className="min-h-screen">
-      <Header theme={theme} />
-
+    <>
       {hero && <PageSections sections={[hero]} />}
 
       <ContactDetails />
 
       <PageSections sections={notHeroSections} />
-    </div>
+    </>
   );
 };
 
