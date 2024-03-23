@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { FC } from 'react';
-import getTheme from '@lib/contentful/theme';
 import { notFound } from 'next/navigation';
 import { parseContentImage } from '@lib/contentful/asset';
 import { getBlogPost, getBlogPosts } from '@lib/contentful/blogPost';
@@ -30,7 +29,6 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 };
 
 const PostPage: FC<PageProps> = async ({ params }) => {
-  const theme = await getTheme();
   const post = await getBlogPost(params.postSlug);
 
   if (!post) return notFound();

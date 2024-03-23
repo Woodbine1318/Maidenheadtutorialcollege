@@ -4,13 +4,11 @@ import PageSections from '@components/PageSections';
 import Pagination from '@components/Pagination';
 import { getBlogPostCount, getBlogPosts } from '@lib/contentful/blogPost';
 import { getPage } from '@lib/contentful/page';
-import getTheme from '@lib/contentful/theme';
 import { notFound } from 'next/navigation';
 
 const postsPerPage = Number(process.env.POSTS_PER_PAGE || 15);
 
 const BlogPage = async () => {
-  const theme = await getTheme();
   const page = await getPage('blog');
   const totalPosts = await getBlogPostCount();
 

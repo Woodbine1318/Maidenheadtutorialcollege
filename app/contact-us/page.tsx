@@ -1,11 +1,9 @@
 import ContactDetails from '@components/ContactDetails';
 import PageSections from '@components/PageSections';
 import { getPage } from '@lib/contentful/page';
-import getTheme from '@lib/contentful/theme';
 import { notFound } from 'next/navigation';
 
 const ContactPage = async () => {
-  const theme = await getTheme();
   const page = await getPage('contact-us');
 
   if (!page) return notFound();
