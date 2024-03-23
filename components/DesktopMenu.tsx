@@ -1,9 +1,9 @@
 'use client';
 
 import { FC } from 'react';
-import { ContentLink as IContentLink, ThemedSSComponent } from '../types';
+import { ContentLink as IContentLink } from '../types';
 import ContentLink from './ContentLink';
-import { Button, Menu, MenuItem, MenuTrigger, Popover } from 'react-aria-components';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 const DesktopMenu: FC<{ topLevelLinks: IContentLink[]; secondaryLinks: IContentLink[] }> = ({
   topLevelLinks,
@@ -19,21 +19,26 @@ const DesktopMenu: FC<{ topLevelLinks: IContentLink[]; secondaryLinks: IContentL
         ))}
       </ul>
 
-      <MenuTrigger>
-        <Button aria-label="See More" className="font-semibold outline-none">
-          More
-        </Button>
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger asChild>
+          <button className="font-semibold outline-none">More</button>
+        </DropdownMenu.Trigger>
 
-        <Popover className="bg-ww-menu-bg shadow-md text-sm text-ww-menu-text py-2 rounded-sm">
-          <Menu className="outline-none">
+        <DropdownMenu.Portal>
+          <DropdownMenu.Content
+            sideOffset={12}
+            align="end"
+            alignOffset={-24}
+            className="bg-ww-menu-bg shadow-md text-sm text-ww-menu-text py-2 rounded-sm"
+          >
             {secondaryLinks.map((link) => (
-              <MenuItem className="outline-none" key={link.name}>
+              <DropdownMenu.Item asChild className="outline-none" key={link.name}>
                 <ContentLink link={link} className="block py-1 px-4" />
-              </MenuItem>
+              </DropdownMenu.Item>
             ))}
-          </Menu>
-        </Popover>
-      </MenuTrigger>
+          </DropdownMenu.Content>
+        </DropdownMenu.Portal>
+      </DropdownMenu.Root>
     </nav>
   );
 };

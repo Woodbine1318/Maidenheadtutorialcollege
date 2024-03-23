@@ -10,6 +10,7 @@
     "types:contentful": "export $(cat .env | awk '!/^\\s*#/' | awk '!/^\\s*$/'); cf-content-types-generator --spaceId $CONTENTFUL_SPACE_ID --token $CONTENTFUL_MANAGEMENT_TOKEN -o contentful/ -X"
   },
   "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@svgr/webpack": "^8.1.0",
     "classnames": "^2.5.1",
     "colorjs.io": "^0.4.5",
