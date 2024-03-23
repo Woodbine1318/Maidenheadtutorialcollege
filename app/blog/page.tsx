@@ -40,3 +40,4 @@ const BlogPage = async () => {
 };
 
 export default BlogPage;
+export const dynamic = 'force-dynamic';

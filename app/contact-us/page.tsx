@@ -25,3 +25,4 @@ const ContactPage = async () => {
 };
 
 export default ContactPage;
+export const dynamic = 'force-dynamic';
