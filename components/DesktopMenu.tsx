@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { ContentLink as IContentLink } from '../types';
 import ContentLink from './ContentLink';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
@@ -9,6 +9,8 @@ const DesktopMenu: FC<{ topLevelLinks: IContentLink[]; secondaryLinks: IContentL
   topLevelLinks,
   secondaryLinks,
 }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <nav className="flex flex-row flex-nowrap items-center justify-end gap-4 text-sm">
       <ul className="flex-1 flex flex-row flex-nowrap items-center justify-end gap-4">
@@ -19,7 +21,7 @@ const DesktopMenu: FC<{ topLevelLinks: IContentLink[]; secondaryLinks: IContentL
         ))}
       </ul>
 
-      <DropdownMenu.Root>
+      <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenu.Trigger asChild>
           <button className="font-semibold outline-none">More</button>
         </DropdownMenu.Trigger>
@@ -32,8 +34,8 @@ const DesktopMenu: FC<{ topLevelLinks: IContentLink[]; secondaryLinks: IContentL
             className="bg-ww-menu-bg shadow-md text-sm text-ww-menu-text py-2 rounded-sm"
           >
             {secondaryLinks.map((link) => (
-              <DropdownMenu.Item asChild className="outline-none" key={link.name}>
-                <ContentLink link={link} className="block py-1 px-4" />
+              <DropdownMenu.Item className="outline-none" key={link.name}>
+                <ContentLink onClick={() => setIsOpen(false)} link={link} className="block py-1 px-4" />
               </DropdownMenu.Item>
             ))}
           </DropdownMenu.Content>

@@ -1,14 +1,20 @@
+'use client';
 import { FC } from 'react';
 import { ContentLink } from '../types';
 import Link from 'next/link';
 import classNames from 'classnames';
 
-const ContentLink: FC<{ link: ContentLink; className?: string }> = ({ link, className }) => {
+const ContentLink: FC<{ link: ContentLink; className?: string; onClick?: () => void }> = ({
+  link,
+  className,
+  onClick = () => {},
+}) => {
   if (link.type === 'External' && link.url)
     return (
       <Link
         target="_blank"
         href={link.url}
+        onClick={onClick}
         className={classNames('hover:opacity-80 transition-all duration-300', className)}
       >
         {link.text}
@@ -19,6 +25,7 @@ const ContentLink: FC<{ link: ContentLink; className?: string }> = ({ link, clas
     return (
       <Link
         href={'/' + link.page.slug}
+        onClick={onClick}
         className={classNames('hover:opacity-80 transition-all duration-300', className)}
       >
         {link.text}
