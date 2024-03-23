@@ -15,7 +15,9 @@ const ContactPage = async () => {
     <>
       {hero && <PageSections sections={[hero]} />}
 
-      <ContactDetails />
+      <div>
+        <ContactDetails />
+      </div>
 
       <PageSections sections={notHeroSections} />
     </>
