@@ -1,8 +1,6 @@
 import { contentfulClient } from '@utils/contentful';
 import { TypePageSkeleton } from '../../contentful';
 import { FC } from 'react';
-import Header from '@components/Header';
-import getTheme from '@lib/contentful/theme';
 import { getPage } from '@lib/contentful/page';
 import { notFound } from 'next/navigation';
 import PageSections from '@components/PageSections';
@@ -40,15 +38,12 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 };
 
 const ContentPage: FC<PageProps> = async ({ params }) => {
-  const theme = await getTheme();
   const page = await getPage(params.pageSlug);
 
   if (!page) return notFound();
 
   return (
     <div className="min-h-screen">
-      <Header theme={theme} />
-
       <PageSections sections={page.sections} />
     </div>
   );
