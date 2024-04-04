@@ -32,11 +32,11 @@ const ContactDetails = async () => {
             <dt className="font-semibold">Find Us</dt>
 
             <dd>
-              <address className="flex-1 ml-8 text-right">{metadata.address}</address>
+              <address className="flex-1 ml-8 text-right not-italic">{metadata.address}</address>
             </dd>
           </div>
 
-          {metadata.notes && <p className="mt-2 italic text-sm">{metadata.notes}</p>}
+          {metadata.notes && <p className="mt-2 text-sm">{metadata.notes}</p>}
         </dl>
       </Container>
     </section>
