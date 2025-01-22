@@ -1,8 +1,8 @@
 'use client';
+import classNames from 'classnames';
+import Link from 'next/link';
 import { FC } from 'react';
 import { ContentLink } from '../types';
-import Link from 'next/link';
-import classNames from 'classnames';
 
 const ContentLink: FC<{ link: ContentLink; className?: string; onClick?: () => void }> = ({
   link,
@@ -15,7 +15,7 @@ const ContentLink: FC<{ link: ContentLink; className?: string; onClick?: () => v
         target="_blank"
         href={link.url}
         onClick={onClick}
-        className={classNames('hover:opacity-80 transition-all duration-300', className)}
+        className={classNames('hover:opacity-50 transition-all duration-300', className)}
       >
         {link.text}
       </Link>
@@ -26,7 +26,7 @@ const ContentLink: FC<{ link: ContentLink; className?: string; onClick?: () => v
       <Link
         href={'/' + link.page.slug}
         onClick={onClick}
-        className={classNames('hover:opacity-80 transition-all duration-300', className)}
+        className={classNames('hover:opacity-50 transition-all duration-300', className)}
       >
         {link.text}
       </Link>
