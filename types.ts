@@ -20,6 +20,10 @@ export interface IThemeContext {
   textColor: string;
   menuBackgroundColor: string;
   menuTextColor: string;
+  secondBackgroundColor: string;
+  sectionBackgroundColor: string;
+  titleTextColor: string;
+  secondMenuBackgroundColor: string;
 }
 
 export interface ThemedSSComponent {
