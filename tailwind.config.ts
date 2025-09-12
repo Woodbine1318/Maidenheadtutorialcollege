@@ -27,7 +27,7 @@ const config: Config = {
         'ww-first-section-bg': 'var(--ww-second-bg-Color)',
         'ww-section-bg': 'var(--ww-section-bg-Color)',
         'ww-tittle-text': 'var(--ww-title-text-bg-Color)',
-        'ww-second-menu-bg-': 'var(--ww-second-menu-bg-Color)',
+        'ww-second-menu-bg': 'var(--ww-second-menu-bg-Color)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

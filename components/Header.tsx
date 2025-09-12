@@ -28,7 +28,7 @@ const Header: FC<ThemedSSComponent> = async ({ theme }) => {
           
           {header.title && !header.logo && <Link className="text-2xl text-ww-tittle-text font-semibold" href="/">{header.title}</Link>}
 
-           <div className="flex-1 hidden md:block lg:hidden">
+           {/* <div className="flex-1 hidden md:block lg:hidden">
             <DesktopMenu
               topLevelLinks={header.navigation!.links.slice(0, 3)}
               secondaryLinks={header.navigation!.links.slice(3)}
@@ -40,7 +40,7 @@ const Header: FC<ThemedSSComponent> = async ({ theme }) => {
               topLevelLinks={header.navigation!.links.slice(0, 5)}
               secondaryLinks={header.navigation!.links.slice(5)}
             />
-          </div> 
+          </div>  */}
         </Container>
       </header>
     </>

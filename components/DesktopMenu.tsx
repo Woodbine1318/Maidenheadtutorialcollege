@@ -12,8 +12,8 @@ const DesktopMenu: FC<{ topLevelLinks: IContentLink[]; secondaryLinks: IContentL
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <nav className="flex flex-row flex-nowrap items-center justify-end gap-4 text-sm">
-      <ul className="flex-1 flex flex-row flex-nowrap items-center justify-end gap-4">
+    <nav className="w-full flex flex-row flex-nowrap items-center justify-center gap-20 text-ww-accent-text bg-ww-second-menu-bg py-4">
+      <ul className="flex flex-row flex-nowrap items-center justify-center gap-20">
         {topLevelLinks.map((link) => (
           <li key={link.name}>
             <ContentLink link={link} />
@@ -23,7 +23,7 @@ const DesktopMenu: FC<{ topLevelLinks: IContentLink[]; secondaryLinks: IContentL
 
       <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenu.Trigger asChild>
-          <button className="font-semibold outline-none">More</button>
+          <button className=" flex font-semibold outline-none">More</button>
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Portal>
@@ -31,7 +31,7 @@ const DesktopMenu: FC<{ topLevelLinks: IContentLink[]; secondaryLinks: IContentL
             sideOffset={12}
             align="end"
             alignOffset={-24}
-            className="bg-ww-menu-bg shadow-md text-sm text-ww-menu-text py-2 rounded-sm"
+            className="bg-ww-second-menu-bg shadow-md text-sm text-ww-menu-text py-2 rounded-sm"
           >
             {secondaryLinks.map((link) => (
               <DropdownMenu.Item className="outline-none" key={link.name}>
