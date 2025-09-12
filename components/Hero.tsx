@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { parseContentImage } from '@lib/contentful/asset';
 import { getAlignmentClassnames } from '@utils/getAlignmentClassnames';
 import Container from './Container';
-import DesktopMenu from './DesktopMenu';
 import getHeader from '@lib/contentful/header';
 import SectionMenu from './SectionMenu';
 
@@ -17,7 +16,7 @@ const Hero: FC<{ hero: HeroEntry }> = async ({ hero: { fields: hero } }) => {
   
   return (
     <section
-      className={classNames('w-full h-auto relative md:flex-row md:items-center md:min-h-[25rem] bg-ww-first-section-bg', getAlignmentClassnames(hero.alignment!))}
+      className={classNames('w-full h-full relative md:flex-row md:items-center md:min-h-[25rem] bg-ww-first-section-bg', getAlignmentClassnames(hero.alignment!))}
       style={
         hero.textColor
           ? ({

@@ -15,12 +15,12 @@ const Header: FC<ThemedSSComponent> = async ({ theme }) => {
 
   return (
     <>
-      {/* {!!header.announcement && <AnnouncementBar announcement={header.announcement} theme={theme} />} */}
+      {/* {!!header.announcement && <AnnouncementBar announcement={header.announcement} theme={theme} />}  */}
 
       <header
         className="w-full text-ww-text"
         style={{ '--ww-contrast-text-color': getTextColor(theme.textColor) } as CSSProperties}
-      >
+      >   
         <Container variant="md" className="flex flex-row nowrap items-center py-9 md:justify-between">
           <div className="md:hidden mr-4">
             <MobileMenu navigation={header.navigation!} theme={theme} />
