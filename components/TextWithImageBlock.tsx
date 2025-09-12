@@ -23,7 +23,7 @@ const TextWithImageBlock: FC<{ section: TextWithImageBlockEntry }> = ({ section:
     >
       <Container
         variant="lg"
-        className={classNames('flex flex-col md:flex-row md:items-center', {
+        className={classNames('flex flex-col md:flex-row md:items-center bg-ww-section-bg', {
           'py-12': fields.spacing === 'Both',
           'pt-12': fields.spacing === 'Top',
           'pb-12': fields.spacing === 'Bottom',
@@ -47,12 +47,12 @@ const TextWithImageBlock: FC<{ section: TextWithImageBlockEntry }> = ({ section:
 
         <div className={classNames(getAlignmentClassnames(fields.alignment), 'md:flex-1')}>
           <Container className="text-ww-text py-8">
-            {fields.heading && <h1 className="text-2xl text-ww-accent md:text-3xl lg:text-3xl">{fields.heading}</h1>}
+            {fields.heading && <h1 className="text-2xl text-ww-tittle-text md:text-3xl lg:text-3xl">{fields.heading}</h1>}
             {fields.body && <Markdown className="c-markdown mt-8 max-w-[75ch] inline-block">{fields.body}</Markdown>}
 
             {cta && (
               <div className="mt-8">
-                <ContentLink link={cta} className="bg-ww-cta-background text-ww-cta-text px-4 py-2" />
+                <ContentLink link={cta} className="rounded-2xl bg-ww-first-section-bg text-ww-cta-text px-4 py-2" />
               </div>
             )}
           </Container>

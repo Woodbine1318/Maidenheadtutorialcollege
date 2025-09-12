@@ -34,7 +34,7 @@ const BlogPostCard: FC<{ post: BlogPostEntry }> = ({ post }) => {
           <p className="text-sm opacity-80 mb-3">{post.fields.summary}</p>
         </div>
 
-        <Link className="text-ww-accent font-semibold text-sm" href={link}>
+        <Link className="text-ww-tittle-text font-semibold text-sm" href={link}>
           Read More
         </Link>
       </div>
