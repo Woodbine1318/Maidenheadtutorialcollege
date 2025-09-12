@@ -4,28 +4,19 @@ import { FC } from 'react';
 import { ContentLink as IContentLink } from '../types';
 import ContentLink from './ContentLink';
 
-const SectionMenu: FC<{ topLevelLinks: IContentLink[]}> = ({
+const SectionMenu: FC<{ topLevelLinks: IContentLink[]; secondaryLinks: IContentLink[] }> = ({
   topLevelLinks,
 }) => {
-
   return (
-    <nav className="w-full flex flex-row">
-      <ul className="flex-1">
-        {topLevelLinks.slice(0, 2).map((link) => (
-          <li className='my-8' key={link.name}>
-            <ContentLink className='bg-ww-cta-background text-ww-cta-text px-10 py-3' link={link} />
-          </li>
-        ))}  
-      </ul>
-      <ul className="flex-1">
-        {topLevelLinks.slice(2, 4).map((link) => (
-          <li className='my-8' key={link.name}>
-            <ContentLink className='rounded-x1 bg-ww-cta-background text-ww-cta-text px-10 py-3 ' link={link} />
-          </li>
-        ))}
-        
-      </ul>
-    </nav>
+    <nav className="flex flex-row flex-nowrap items-center justify-center gap-4 text-sm">
+    <ul className="flex flex-row flex-nowrap items-center justify-center gap-4">
+      {topLevelLinks.slice(0, 4).map((link) => (
+        <li key={link.name}>
+          <ContentLink className='rounded-3xl bg-ww-section-bg text-ww-tittle-text px-6 py-3' link={link} />
+        </li>
+      ))}
+    </ul>
+  </nav>
   );
 };
 

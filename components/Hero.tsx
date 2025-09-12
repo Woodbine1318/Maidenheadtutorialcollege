@@ -17,7 +17,7 @@ const Hero: FC<{ hero: HeroEntry }> = async ({ hero: { fields: hero } }) => {
   
   return (
     <section
-      className={classNames('w-full h-64 relative md:flex-row md:items-start min-h-[20rem] md:min-h-[25rem] bg-ww-first-section-bg', getAlignmentClassnames(hero.alignment!))}
+      className={classNames('w-full h-auto relative md:flex-row md:items-center md:min-h-[25rem] bg-ww-first-section-bg', getAlignmentClassnames(hero.alignment!))}
       style={
         hero.textColor
           ? ({
@@ -27,30 +27,31 @@ const Hero: FC<{ hero: HeroEntry }> = async ({ hero: { fields: hero } }) => {
       }
       
     >
-      <div className="flex-1 py-32" >
+      <div className="w-full flex-1" >
       <Container className="text-ww-text">
         {hero.heading && <h1 className="text-4xl md:text-5xl lg:text-7xl">{hero.heading}</h1>}
         {hero.body && <p>{hero.body}</p>}
 
-        {/* {hero.heading === "Tutorial College" && (
+         {hero.heading === "Tutorial College" && (
         <>
-          <div className="hidden md:block lg:hidden">
+          <div className="hidden md:block lg:hidden mt-10">
               <SectionMenu
                 topLevelLinks={header.navigation!.links.slice(0, 3)}
+                secondaryLinks={header.navigation!.links.slice(3)}
               />
             </div>
-
-            <div className="hidden lg:block">
+            <div className="hidden lg:block mt-10">
               <SectionMenu
                 topLevelLinks={header.navigation!.links.slice(0, 5)}
+                secondaryLinks={header.navigation!.links.slice(5)}
               />
           </div>
         </>
-      )} */}
+      )} 
        
       </Container>
       </div>
-      <div className="flex-1  w-full h-full ">
+      <div className="flex-1 ">
       {backgroundImage && (
         <>
           <img
@@ -59,9 +60,8 @@ const Hero: FC<{ hero: HeroEntry }> = async ({ hero: { fields: hero } }) => {
             height={backgroundImage.height}
             alt={backgroundImage.alt}
             loading="eager"
-            className="w-full h-full object-cover"
+            className="w-full max-h-[25rem] min-h-[25rem] "
           />
-           
         </>
       )}
       
