@@ -15,7 +15,7 @@ const Header: FC<ThemedSSComponent> = async ({ theme }) => {
 
   return (
     <>
-      {/* {!!header.announcement && <AnnouncementBar announcement={header.announcement} theme={theme} />}  */}
+       {!!header.announcement && <AnnouncementBar announcement={header.announcement} theme={theme} />} 
 
       <header
         className="w-full text-ww-text"
