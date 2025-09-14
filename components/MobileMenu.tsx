@@ -14,7 +14,7 @@ const MobileMenu: FC<ThemedSSComponent & { navigation: ContentNavigation }> = ({
     <Drawer.Root direction="left">
       <Drawer.Trigger aria-label="Open navigation" className="align-middle">
         <MenuIcon
-          className={classNames('w-4 h-4', {
+          className={classNames('w-4 h-4 bg-ww-first-section-bg', {
             'u-icon-stroke-white': getTextColor(theme.menuBackgroundColor) === '#ffffff',
             'u-icon-stroke-black': getTextColor(theme.menuBackgroundColor) === '#000000',
           })}
@@ -25,7 +25,7 @@ const MobileMenu: FC<ThemedSSComponent & { navigation: ContentNavigation }> = ({
         <Drawer.Overlay className="fixed inset-0 z-10 bg-black/40" />
 
         <Drawer.Content
-          className="fixed bottom-0 left-0 top-0 z-20 h-screen flex flex-col w-full pt-8 px-4 md:max-sm bg-ww-menu-bg text-ww-contrast-text overflow-y-auto"
+          className="fixed bottom-0 left-0 top-0 z-20 h-screen flex flex-col w-full pt-8 px-4 md:max-sm bg-ww-first-section-bg text-ww-contrast-text overflow-y-auto"
           style={{ '--ww-contrast-text-color': theme.menuTextColor } as CSSProperties}
         >
           <Drawer.Close aria-label="Close navigation">

@@ -5,6 +5,8 @@ import { getPage } from '@lib/contentful/page';
 import { notFound } from 'next/navigation';
 import PageSections from '@components/PageSections';
 import { Metadata } from 'next';
+import DesktopMenu from '@components/DesktopMenu';
+import getHeader from '@lib/contentful/header';
 
 interface PageProps {
   params: { pageSlug: string };
@@ -42,8 +44,24 @@ const ContentPage: FC<PageProps> = async ({ params }) => {
 
   if (!page) return notFound();
 
+  const header = await getHeader();
+
+  if (!header) return null;
+
   return (
     <div className="min-h-screen">
+      <div className="hidden md:block lg:hidden">
+        <DesktopMenu
+          topLevelLinks={header.navigation!.links.slice(0, 3)}
+          secondaryLinks={header.navigation!.links.slice(3)}
+        />
+      </div>
+      <div className="hidden lg:block">
+        <DesktopMenu
+          topLevelLinks={header.navigation!.links.slice(0, 5)}
+          secondaryLinks={header.navigation!.links.slice(5)}
+        />
+      </div>
       <PageSections sections={page.sections} />
     </div>
   );

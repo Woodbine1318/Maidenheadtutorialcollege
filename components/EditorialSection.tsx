@@ -23,14 +23,14 @@ const EditorialSection: FC<{ section: EditorialSectionEntry }> = ({ section: { f
         } as CSSProperties
       }
     >
-      <Container variant="lg" className="text-ww-text md:flex flex-row items-center gap-8">
+      <Container variant="lg" className="text-ww-text md:flex flex-row items-center gap-8 bg-ww-section-bg py-10">
         <div
           className={classNames('flex-1', {
             'md:order-2 md:pr-8 md:ml-8': fields.headingAlignment === 'Right',
             'md:pl-8 md:mr-8': fields.headingAlignment === 'Left',
           })}
         >
-          {fields.heading && <h1 className="text-3xl text-ww-accent md:text-3xl lg:text-3xl">{fields.heading}</h1>}
+          {fields.heading && <h1 className="text-3xl text-ww-tittle-text md:text-3xl lg:text-3xl">{fields.heading}</h1>}
         </div>
 
         <div
@@ -42,7 +42,7 @@ const EditorialSection: FC<{ section: EditorialSectionEntry }> = ({ section: { f
 
           {cta && (
             <div className="mt-8">
-              <ContentLink link={cta} className="bg-ww-cta-background text-ww-cta-text px-4 py-2" />
+              <ContentLink link={cta} className="rounded-2xl bg-ww-first-section-bg text-ww-cta-text px-4 py-2" />
             </div>
           )}
         </div>

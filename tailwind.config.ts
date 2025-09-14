@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: 'var(--font-inter)',
-        body: 'var(--font-inter)',
+        sans: 'Perpetua',
+        body: 'Perpetua',
       },
       colors: {
         'ww-accent': 'var(--ww-accent-color)',
@@ -24,6 +24,10 @@ const config: Config = {
         'ww-menu-text': 'var(--ww-menu-text-color)',
         'ww-cta-background': 'var(--ww-cta-bg-color, var(--ww-accent-color))',
         'ww-cta-text': 'var(--ww-cta-text-color, var(--ww-text-on-accent-color))',
+        'ww-first-section-bg': 'var(--ww-second-bg-Color)',
+        'ww-section-bg': 'var(--ww-section-bg-Color)',
+        'ww-tittle-text': 'var(--ww-title-text-bg-Color)',
+        'ww-second-menu-bg': 'var(--ww-second-menu-bg-Color)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
