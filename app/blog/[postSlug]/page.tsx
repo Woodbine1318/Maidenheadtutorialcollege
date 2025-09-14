@@ -5,6 +5,8 @@ import { parseContentImage } from '@lib/contentful/asset';
 import { getBlogPost, getBlogPosts } from '@lib/contentful/blogPost';
 import Container from '@components/Container';
 import Markdown from 'react-markdown';
+import DesktopMenu from '@components/DesktopMenu';
+import getHeader from '@lib/contentful/header';
 
 interface PageProps {
   params: { postSlug: string };
@@ -30,13 +32,27 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 
 const PostPage: FC<PageProps> = async ({ params }) => {
   const post = await getBlogPost(params.postSlug);
-
+  const header = await getHeader();
+  
   if (!post) return notFound();
+  if (!header) return null;
 
   const image = post.fields.cover ? parseContentImage(post.fields.cover) : null;
 
   return (
     <>
+    <div className="hidden md:block lg:hidden">
+        <DesktopMenu
+          topLevelLinks={header.navigation!.links.slice(0, 3)}
+          secondaryLinks={header.navigation!.links.slice(3)}
+        />
+      </div>
+      <div className="hidden lg:block">
+        <DesktopMenu
+          topLevelLinks={header.navigation!.links.slice(0, 5)}
+          secondaryLinks={header.navigation!.links.slice(5)}
+        />
+      </div>
       <header>
         <Container variant="lg" className="flex flex-col items-center text-center mb-8 pt-16 pb-12 md:pt-20">
           <h1 className="text-3xl font-semibold mb-4 md:text-4xl">{post.fields.title}</h1>

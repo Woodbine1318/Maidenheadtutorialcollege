@@ -13,7 +13,7 @@ const Pagination: FC<{ totalPages: number; currentPage: number }> = ({ totalPage
   };
 
   return (
-    <label className="text-center font-semibold text-md bg-ww-accent px-4 py-2 rounded-md text-ww-accent-text">
+    <label className="text-center font-semibold text-ww-accent-text text-md px-4 py-2 rounded-2xl bg-ww-first-section-bg">
       <span>Page </span>
 
       <select className="bg-transparent mx-1" value={currentPage} onChange={(e) => navigateToPage(e.target.value)}>

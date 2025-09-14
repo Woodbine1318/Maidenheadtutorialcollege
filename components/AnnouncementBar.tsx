@@ -11,7 +11,7 @@ const AnnouncementBar: FC<ThemedSSComponent & { announcement: ContentHeader['ann
 
   return (
     <section
-      className="w-full text-center py-2 px-8 bg-ww-accent text-ww-contrast-text"
+      className="w-full text-center py-2 px-8 bg-ww-first-section-bg  text-ww-contrast-text"
       style={{ '--ww-contrast-text-color': textColor } as CSSProperties}
     >
       <Container>

@@ -1,17 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import { CSSProperties, FC } from 'react';
 import { HeroEntry } from '../types';
-import Container from './Container';
 import classNames from 'classnames';
 import { parseContentImage } from '@lib/contentful/asset';
 import { getAlignmentClassnames } from '@utils/getAlignmentClassnames';
+import Container from './Container';
+import getHeader from '@lib/contentful/header';
+import SectionMenu from './SectionMenu';
 
-const Hero: FC<{ hero: HeroEntry }> = ({ hero: { fields: hero } }) => {
+const Hero: FC<{ hero: HeroEntry }> = async ({ hero: { fields: hero } }) => {
   const backgroundImage = hero.backgroundImage && parseContentImage(hero.backgroundImage);
+  const header = await getHeader();
 
+  if (!header) return null;
+  
   return (
     <section
-      className={classNames('w-full relative min-h-[20rem] md:min-h-[25rem]', getAlignmentClassnames(hero.alignment!))}
+      className={classNames('w-full h-full relative md:flex-row md:items-center md:min-h-[25rem] bg-ww-first-section-bg', getAlignmentClassnames(hero.alignment!))}
       style={
         hero.textColor
           ? ({
@@ -19,7 +24,33 @@ const Hero: FC<{ hero: HeroEntry }> = ({ hero: { fields: hero } }) => {
             } as CSSProperties)
           : {}
       }
+      
     >
+      <div className="w-full flex-1" >
+      <Container className="text-ww-text">
+        {hero.heading && <h1 className="text-4xl md:text-5xl lg:text-7xl">{hero.heading}</h1>}
+        {hero.body && <p>{hero.body}</p>}
+
+         {hero.heading === "Tutorial College" && (
+        <>
+          <div className="hidden md:block lg:hidden mt-10">
+              <SectionMenu
+                topLevelLinks={header.navigation!.links.slice(0, 3)}
+                secondaryLinks={header.navigation!.links.slice(3)}
+              />
+            </div>
+            <div className="hidden lg:block mt-10">
+              <SectionMenu
+                topLevelLinks={header.navigation!.links.slice(0, 5)}
+                secondaryLinks={header.navigation!.links.slice(5)}
+              />
+          </div>
+        </>
+      )} 
+       
+      </Container>
+      </div>
+      <div className="flex-1 ">
       {backgroundImage && (
         <>
           <img
@@ -28,21 +59,12 @@ const Hero: FC<{ hero: HeroEntry }> = ({ hero: { fields: hero } }) => {
             height={backgroundImage.height}
             alt={backgroundImage.alt}
             loading="eager"
-            srcSet={`${backgroundImage.src}?w=300 1x, ${backgroundImage.src} 2x`}
-            className="absolute w-full h-full object-cover"
-          />
-
-          <div
-            className="absolute w-full h-full top-0 left-0 bg-black"
-            style={{ opacity: (hero.overlayOpacity ?? 0) / 100 }}
+            className="w-full max-h-[25rem] min-h-[25rem] "
           />
         </>
       )}
-
-      <Container className="relative text-ww-text">
-        {hero.heading && <h1 className="text-4xl md:text-5xl lg:text-7xl">{hero.heading}</h1>}
-        {hero.body && <p>{hero.body}</p>}
-      </Container>
+      
+      </div>
     </section>
   );
 };
