@@ -5,7 +5,7 @@ const ContactDetails = async () => {
   const metadata = await getMetadata();
 
   return (
-    <section>
+    <section className='h-full'>
       <Container variant="lg" className="gap-4 py-12">
         <dl>
           <div className="flex flex-row justify-between items-center py-2 border-b border-dotted border-ww-accent">

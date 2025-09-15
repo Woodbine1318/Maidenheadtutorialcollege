@@ -31,7 +31,7 @@ const Hero: FC<{ hero: HeroEntry }> = async ({ hero: { fields: hero } }) => {
         {hero.heading && <h1 className="text-4xl md:text-5xl lg:text-7xl">{hero.heading}</h1>}
         {hero.body && <p>{hero.body}</p>}
 
-         {hero.heading === "Tutorial College" && (
+         {hero.name === "Tutorial College" && (
         <>
           <div className="hidden md:block lg:hidden mt-10">
               <SectionMenu
@@ -59,7 +59,7 @@ const Hero: FC<{ hero: HeroEntry }> = async ({ hero: { fields: hero } }) => {
             height={backgroundImage.height}
             alt={backgroundImage.alt}
             loading="eager"
-            className="w-full max-h-[25rem] min-h-[25rem] "
+            className="w-full max-h-[25rem] min-h-[25rem] object-cover "
           />
         </>
       )}
