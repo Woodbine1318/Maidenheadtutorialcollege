@@ -12,14 +12,21 @@ interface PageProps {
   params: { postSlug: string };
 }
 
+export const revalidate = 3600;
+
+// A new post is saved the first time someone opens it. Later visits reuse that copy.
+export const dynamicParams = true;
+
 export const generateStaticParams = async () => {
-  const posts = await getBlogPosts({});
+  const posts = await getBlogPosts({ limit: 1000 });
 
   return posts.map((post) => ({ postSlug: post.fields.slug }));
 };
 
 export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
   const post = await getBlogPost(params.postSlug);
+
+  if (!post) return { title: 'Page not found' };
 
   return {
     title: post.fields.title,

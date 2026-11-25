@@ -5,6 +5,8 @@ import getHeader from '@lib/contentful/header';
 import { getPage } from '@lib/contentful/page';
 import { notFound } from 'next/navigation';
 
+export const revalidate = 3600;
+
 const ContactPage = async () => {
   const page = await getPage('contact-us');
 
@@ -44,4 +46,3 @@ const ContactPage = async () => {
 };
 
 export default ContactPage;
-export const dynamic = 'force-dynamic';

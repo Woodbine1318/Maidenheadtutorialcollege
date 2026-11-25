@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "yarn types:contentful && next build",
+    "build": "npm run types:contentful && next build",
     "start": "next start",
     "lint": "next lint",
-    "types:contentful": "export $(cat .env | awk '!/^\\s*#/' | awk '!/^\\s*$/'); cf-content-types-generator --spaceId $CONTENTFUL_SPACE_ID --token $CONTENTFUL_MANAGEMENT_TOKEN -o contentful/ -X"
+    "types:contentful": "node scripts/generate-contentful-types.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.6",

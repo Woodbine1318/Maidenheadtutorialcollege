@@ -8,6 +8,8 @@ import Footer from '@components/Footer';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Maidenhead Tutorial College',
   description:

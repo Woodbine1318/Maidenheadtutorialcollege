@@ -2,12 +2,21 @@ import BlogPostCard from '@components/BlogPostCard';
 import Container from '@components/Container';
 import PageSections from '@components/PageSections';
 import Pagination from '@components/Pagination';
-import { getBlogPostCount, getBlogPosts } from '@lib/contentful/blogPost';
+import { getBlogPostCount, getBlogPosts, postsPerPage } from '@lib/contentful/blogPost';
 import { getPage } from '@lib/contentful/page';
 import { notFound } from 'next/navigation';
 import { FC } from 'react';
 
-const postsPerPage = Number(process.env.POSTS_PER_PAGE || 15);
+export const revalidate = 3600;
+
+export const dynamicParams = false;
+
+export const generateStaticParams = async () => {
+  const totalPosts = await getBlogPostCount();
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
+
+  return Array.from({ length: totalPages }, (_, index) => ({ index: String(index + 1) }));
+};
 
 const PaginatedBlogPage: FC<{ params: { index: string } }> = async ({ params }) => {
   const page = await getPage('blog');

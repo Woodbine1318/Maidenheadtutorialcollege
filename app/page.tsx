@@ -3,6 +3,8 @@ import PageSections from '@components/PageSections';
 import { getPage } from '@lib/contentful/page';
 import getTheme from '@lib/contentful/theme';
 
+export const revalidate = 3600;
+
 const HomePage = async () => {
   const themePromise = getTheme();
   const pagePromise = getPage('home');

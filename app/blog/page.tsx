@@ -3,12 +3,12 @@ import Container from '@components/Container';
 import DesktopMenu from '@components/DesktopMenu';
 import PageSections from '@components/PageSections';
 import Pagination from '@components/Pagination';
-import { getBlogPostCount, getBlogPosts } from '@lib/contentful/blogPost';
+import { getBlogPostCount, getBlogPosts, postsPerPage } from '@lib/contentful/blogPost';
 import getHeader from '@lib/contentful/header';
 import { getPage } from '@lib/contentful/page';
 import { notFound } from 'next/navigation';
 
-const postsPerPage = Number(process.env.POSTS_PER_PAGE || 15);
+export const revalidate = 3600;
 
 const BlogPage = async () => {
   const page = await getPage('blog');
@@ -57,4 +57,3 @@ const BlogPage = async () => {
 };
 
 export default BlogPage;
-export const dynamic = 'force-dynamic';
