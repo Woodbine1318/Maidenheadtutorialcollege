@@ -1,7 +1,5 @@
-import { contentfulClient } from '@utils/contentful';
-import { TypePageSkeleton } from '../../contentful';
 import { FC } from 'react';
-import { getPage } from '@lib/contentful/page';
+import { getContentPageParams, getPage } from '@lib/contentful/page';
 import { notFound } from 'next/navigation';
 import PageSections from '@components/PageSections';
 import { Metadata } from 'next';
@@ -12,30 +10,21 @@ interface PageProps {
   params: { pageSlug: string };
 }
 
-export const generateStaticParams = async () => {
-  const contentful = contentfulClient({});
+export const revalidate = 3600;
 
-  const response = await contentful.getEntries<TypePageSkeleton>({
-    content_type: 'page',
-  });
+// Addresses that are not real pages 404 from the saved shell and do not call Contentful.
+export const dynamicParams = false;
 
-  return response.items.map((page) => ({ pageSlug: page.fields.slug }));
-};
+export const generateStaticParams = async () => getContentPageParams();
 
 export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
-  const contentful = contentfulClient({});
+  const page = await getPage(params.pageSlug);
 
-  const response = await contentful.getEntries<TypePageSkeleton>({
-    content_type: 'page',
-    'fields.slug': params.pageSlug,
-    limit: 1,
-  });
-
-  const [page] = response.items ?? [];
+  if (!page) return { title: 'Page not found' };
 
   return {
-    title: page.fields.title,
-    description: page.fields.metadataDescription ?? '',
+    title: page.title,
+    description: page.metadataDescription ?? '',
   };
 };
 

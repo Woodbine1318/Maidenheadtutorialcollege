@@ -63,6 +63,7 @@ export interface ContentNavigation {
 export interface ContentPage {
   title: string;
   slug: string;
+  metadataDescription?: string;
   sections: Entry<
     | TypeHeroSkeleton
     | TypeRichTextSkeleton
